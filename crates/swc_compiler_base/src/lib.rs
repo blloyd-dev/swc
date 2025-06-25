@@ -86,6 +86,9 @@ pub fn parse_js(
                 parse_file_as_commonjs(&fm, syntax, target, comments, &mut errors)
                     .map(Program::Script)
             }
+            IsModule::CommonJS => {
+                parse_file_as_module(&fm, syntax, target, comments, &mut errors)
+            }
             IsModule::Unknown => parse_file_as_program(&fm, syntax, target, comments, &mut errors),
         };
 
